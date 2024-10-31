@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --backgroundColor: #1A1A1A;
+  --terminalBackground: #1E1E1E;
+  --glowColor: #40E0D0;
+  --glowIntensity: 0.5;
+  --borderColor: #2A2A2A;
+}
+
+body {
+  color: #D4D4D4;
+  background: var(--backgroundColor);
+}
+
+.terminal {
+  background-color: var(--terminalBackground);
+  box-shadow: 0 0 10px var(--glowColor);
+  border: 1px solid var(--glowColor);
+  opacity: var(--glowIntensity);
+  transition: all 0.3s ease-in-out;
+}
+
+.terminal:hover {
+  opacity: 1;
+  box-shadow: 0 0 20px var(--glowColor);
+}
+
+.sidebar-button {
+  @apply w-full px-4 py-3 flex items-center gap-3 text-[#D4D4D4] hover:bg-[#2A2A2A] transition-colors relative;
+  border-bottom: 1px solid var(--borderColor);
+}
+
+.sidebar-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--glowColor);
+  opacity: 0;
+  box-shadow: 0 0 8px var(--glowColor);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-button:hover::after {
+  opacity: var(--glowIntensity);
+}
+
+.sidebar-button:first-child {
+  @apply rounded-t-lg;
+}
+
+.sidebar-button:last-child {
+  @apply rounded-b-lg border-none;
+}
+
+.terminal-font {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.action-button {
+  @apply w-full bg-[#1A1A1A] hover:bg-[#2A2A2A] text-[#D4D4D4] relative;
+}
+
+.action-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--glowColor);
+  opacity: 0;
+  box-shadow: 0 0 8px var(--glowColor);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.action-button:hover::after {
+  opacity: var(--glowIntensity);
+}
